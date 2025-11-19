@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+}
+
+/* Product Box Style */
+.product-box {
+    width: 250px;
+    display: inline-block;
+    border: 2px solid #ccc;
+    background: white;
+    padding: 15px;
+    margin: 20px;
+    text-align: center;
+    outline: 0px solid transparent;
+    outline-offset: 0px;
+    transition: 0.3s;
+}
+
+/* Product images */
+.product-box img {
+    width: 120px;
+    height: 120px;
+}
+
+/* Hover Effect */
+.product-box:hover {
+    outline: 3px solid #007bff;
+    outline-offset: 5px;
+    transform: scale(1.03);
+}
+
+/* Buy Now button */
+.buy-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.buy-btn:hover {
+    background: #0056b3;
+}
