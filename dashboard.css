@@ -1,0 +1,72 @@
+body {
+    font-family: "Times New Roman", serif;
+    background: white;
+}
+
+.title {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.x-logo {
+    color: green;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.login-info a {
+    text-decoration: none;
+}
+
+.body-area {
+    display: flex;
+    min-height: 200px;
+}
+
+.sidebar {
+    width: 25%;
+    border-right: 1px solid black;
+    padding: 10px;
+}
+
+.sidebar h4 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 5px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.content {
+    width: 75%;
+    padding: 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+}
