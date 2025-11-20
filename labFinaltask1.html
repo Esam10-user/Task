@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Registration</title>
+<style>
+
+        body { font-family: Arial; margin: 40px; }
+
+        .error { color: red; font-size: 14px; }
+
+        #stats { display: none; margin-top: 20px; padding: 10px; border: 1px solid #aaa; }
+
+        label { display:block; margin-top:10px; }
+
+        input[type=text], input[type=email] { width: 250px; padding:5px; }
+
+        button { margin-top: 15px; padding: 8px 15px; }
+</style>
+</head>
+<body>
+<h2>Event Registration Form</h2>
+<form id="regForm">
+<label>Full Name (Required)</label>
+<input type="text" id="name">
+<div id="nameErr" class="error"></div>
+<label>Professional Email (Required)</label>
+<input type="email" id="email">
+<div id="emailErr" class="error"></div>
+<label>Company / Institution (Optional)</label>
+<input type="text" id="company">
+<label>Attendance Type (Required)</label>
+<input type="radio" name="type" value="Virtual"> Virtual
+<input type="radio" name="type" value="In-Person"> In-Person
+<div id="typeErr" class="error"></div>
+<button type="submit">Register</button>
+</form>
+<button id="toggleBtn">Show Event Analytics</button>
+<div id="stats">
+<h3>Event Analytics</h3>
+<p>Total Registrants: <span id="total"></span></p>
+<p>Virtual: <span id="virtual"></span></p>
+<p>In-Person: <span id="inperson"></span></p>
+</div>
+<script>
+
+    let registrations = [];
+
+    const nameField = document.getElementById("name");
+
+    const emailField = document.getElementById("email");
+
+    const nameErr = document.getElementById("nameErr");
+
+    const emailErr = document.getElementById("emailErr");
+
+    const typeErr = document.getElementById("typeErr");
+
+   
+
+    nameField.addEventListener("input", () => {
+
+        let name = nameField.value.trim();
+
+        if (name.length < 6 || name.length > 100) {
+
+            nameErr.textContent = "Name must be between 6 and 100 characters.";
+
+        } else {
+
+            nameErr.textContent = "";
+
+        }
+
+    });
+
+   
+
+    emailField.addEventListener("input", () => {
+
+        let email = emailField.value;
+
+        if (!email.includes("@") || !email.includes(".")) {
+
+            emailErr.textContent = "Please enter a valid professional email address.";
+
+        } else {
+
+            emailErr.textContent = "";
+
+        }
+
+    });
+
+    document.getElementById("regForm").addEventListener("submit", (e) => {
+
+        e.preventDefault();
+
+        let name = nameField.value.trim();
+
+        let email = emailField.value.trim();
+
+        let type = document.querySelector("input[name='type']:checked");
+
+        let valid = true;
+
+        if (name.length < 6 || name.length > 100) {
+
+            nameErr.textContent = "Name must be between 6 and 100 characters.";
+
+            valid = false;
+
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+
+            emailErr.textContent = "Please enter a valid professional email address.";
+
+            valid = false;
+
+        }
+
+        if (!type) {
+
+            typeErr.textContent = "Please select your attendance type.";
+
+            valid = false;
+
+        } else {
+
+            typeErr.textContent = "";
+
+        }
+
+        if (!valid) return;
+
+        registrations.push({ name, email, type: type.value });
+
+        alert("Registration Successful!");
+
+        document.getElementById("regForm").reset();
+
+    });
+
+   
+
+    document.getElementById("toggleBtn").addEventListener("click", () => {
+
+        let stats = document.getElementById("stats");
+
+        let btn = document.getElementById("toggleBtn");
+
+        if (stats.style.display === "none") {
+
+           
+
+            let virtual = registrations.filter(r => r.type === "Virtual").length;
+
+            let inperson = registrations.filter(r => r.type === "In-Person").length;
+
+            document.getElementById("total").textContent = registrations.length;
+
+            document.getElementById("virtual").textContent = virtual;
+
+            document.getElementById("inperson").textContent = inperson;
+
+            stats.style.display = "block";
+
+            btn.textContent = "Hide Event Analytics";
+
+        } else {
+
+            stats.style.display = "none";
+
+            btn.textContent = "Show Event Analytics";
+
+        }
+
+    });
+</script>
+</body>
+</html>
+ 
+
+
+
+
